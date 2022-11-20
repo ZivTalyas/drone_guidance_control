@@ -1,0 +1,18 @@
+cd home 
+-> open here new folder with the name: final_project
+-> enter to the folder
+git init
+git config user.name  (see if you can see your github user name here)
+git config user.email  (see if you see your email here)
+git remote add master https://github.com/ZivTalyas/final_reop.git
+git pull master master
+git checkout master (see if you are on the master branch)
+-> check if you can see file with the name "testing"
+
+
+
+git config --global credential.helper cache
+git pull master
+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
+
+
