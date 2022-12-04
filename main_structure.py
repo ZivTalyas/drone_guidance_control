@@ -22,10 +22,10 @@ def relevant_columns():
             np.savetxt(f, line, fmt='%.5f')
 
 def determine_directory(): 
-    if()
+    #if()
 
 
 if __name__ == "__main__":
     relevant_columns()
     #acc_directory()
-    determine_directory() 
+    #determine_directory() 
