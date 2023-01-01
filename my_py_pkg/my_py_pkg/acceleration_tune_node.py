@@ -6,8 +6,6 @@ import rclpy
 from rclpy.node import Node
 import numpy as np
 from mavsdk.offboard import (Attitude, OffboardError)
-import rospy
-from sensor_msgs.msg import Imu
 
 
 
@@ -27,7 +25,8 @@ async def run():
 
    
     # Start the tasks
-    #asyncio.ensure_future(print_imu(drone))
+    asyncio.ensure_future(print_imu(drone))
+    #asyncio.ensure_future(print_imu_filter(drone))
     
     
     print("-- Setting initial setpoint")
@@ -44,25 +43,10 @@ async def run():
         return
 
     print("-- Go up at 70% thrust")
-    await drone.offboard.set_attitude(Attitude(0.0, 0.0, 0.0, 0.7))
-    #print_imu(drone)
-    await asyncio.sleep(20)
-    
-
-    print("-- Roll 30 at 60% thrust")
-    await drone.offboard.set_attitude(Attitude(10.0, 0.0, 0.0, 0.6))
-    #print_imu(drone)
-    await asyncio.sleep(20)
-
-    print("-- Roll -30 at 60% thrust")
-    await drone.offboard.set_attitude(Attitude(-10.0, 0.0, 0.0, 0.6))
-    #print_imu(drone)
-    await asyncio.sleep(20)
-
-    print("-- Hover at 60% thrust")
-    await drone.offboard.set_attitude(Attitude(0.0, 0.0, 0.0, 0.6))
-    #print_imu(drone)
-    await asyncio.sleep(20)
+    await drone.offboard.set_attitude(Attitude(2, 0.0, 0.0, 0.7))
+    imu_raw = print_imu(drone)
+    #imu_filter = print_imu_filter(drone)
+    await asyncio.sleep(5)
 
     print("-- Stopping offboard")
     try:
@@ -72,37 +56,50 @@ async def run():
               {error._result.result}")
 
     await drone.action.land()
+    
+    #imu = np.c_[imu_raw,imu_filter]
+    mat = np.matrix(imu_raw)
+    with open('for_graph', 'wb') as f:
+        for line in mat:
+            np.savetxt(f, line, fmt='%.5f')
 
 
-#async def print_imu(drone):
-    #async for imu in drone.telemetry.subscribe_scaled_imu(): 
+
+
+async def print_imu(drone):
+    async for imu in drone.telemetry.imu(): 
         #acceleration_x = imu.acceleration_frd.forward_m_s2
-        #acceleration_y = imu.acceleration_frd.right_m_s2
-        #acceleration_z = imu.acceleration_frd.down_m_s2
-        #angular_velocity__x = imu.angular_velocity_frd.forward_rad_s
+        #acceleration_y = imu.acceleration_frd.
+        acceleration_z = np.array([0])
+        angular_velocity_x = np.array([0])
+        acceleration_z = np.vstack(0,imu.acceleration_frd.down_m_s2)
+        angular_velocity_x = np.vstack(0,imu.angular_velocity_frd.forward_rad_s)
         #angular_velocity_y = imu.angular_velocity_frd.right_rad_s
         #angular_velocity_z = imu.angular_velocity_frd.down_rad_s
-        #imu_matrix = np.c_[acceleration_x, acceleration_y, acceleration_z, angular_velocity__x, angular_velocity_y,angular_velocity_z]
+        
        
         #print(imu_matrix)
- # Initialize the node
-rospy.init_node("scaled_imu_node")
-
-def scaled_imu_callback(msg):
-    # This function will be called every time the scaled IMU data is updated
-    print(f"Acceleration: {msg.linear_acceleration}")
-    print(f"Angular velocity: {msg.angular_velocity}")
-    print(f"Quaternion: {msg.orientation}")
-
-# Subscribe to the scaled_imu topic
-sub = rospy.Subscriber("scaled_imu", Imu, scaled_imu_callback)
-
-# Spin to keep the node alive
-rospy.spin()       
-
+    imu_matrix = np.c_[acceleration_z, angular_velocity_x]    
+    return(imu_matrix)
+"""
+async def print_imu_filter(drone):
+    async for imu in drone.telemetry.imu.scaled_imu(): 
+        #acceleration_x = imu.acceleration_frd.forward_m_s2
+        #acceleration_y = imu.acceleration_frd.right_m_s2
+        acceleration_z = np.array([])
+        angular_velocity_x = np.array([])
+        acceleration_z = np.vstack(imu.acceleration_frd.down_m_s2)
+        angular_velocity_x = np.vstack(imu.angular_velocity_frd.forward_rad_s)
+        #angular_velocity_y = imu.angular_velocity_frd.right_rad_s
+        #angular_velocity_z = imu.angular_velocity_frd.down_rad_s
+    
+       #print(imu_matrix)
+    imu_matrix = np.c_[acceleration_z, angular_velocity_x]   
+    return(imu_matrix)"""
 
 if __name__ == "__main__":
     # Start the main function
     asyncio.ensure_future(run())
+    # Show the plot
     # Runs the event loop until the program is canceled with e.g. CTRL-C
     asyncio.get_event_loop().run_forever()

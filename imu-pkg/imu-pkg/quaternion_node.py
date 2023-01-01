@@ -8,6 +8,7 @@ import numpy as np
 from mavsdk.offboard import (Attitude, OffboardError)
 
 
+
 async def run():
     # Init the drone
     drone = System()
@@ -70,7 +71,7 @@ async def run():
     try:
         await drone.offboard.stop()
     except OffboardError as error:
-        print(f"Stopping offboard mode failed with error code: \
+        print(f"Stoppinprint_img offboard mode failed with error code: \
               {error._result.result}")
 
     await drone.action.land()
@@ -78,18 +79,8 @@ async def run():
 
 async def print_imu(drone):
     async for attitude_quaternion in drone.telemetry.attitude_quaternion(): 
-        q_0 = attitude_quaternion.w
-        q_1 = attitude_quaternion.x
-        q_2 = attitude_quaternion.y
-        q_3 = attitude_quaternion.z
-        q_matrix = np.c_[q_0,q_1,q_2,q_3]
-
-        #print(q_matrix)
-
-#async def thrust(drone):
-    #async for attitude in drone.offboard.attitude():
-        #thrust_range = attitude.thrust_value
-        #print(f"thrust range is: {thrust_range}")
+        imu_raw = attitude_quaternion
+        print(imu_raw)
 
 
 if __name__ == "__main__":
