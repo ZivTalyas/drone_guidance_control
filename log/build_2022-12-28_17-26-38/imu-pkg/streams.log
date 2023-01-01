@@ -1,0 +1,33 @@
+[0.768s] Invoking command in '/home/galsiton/ros2_ws/src/imu-pkg': PYTHONPATH=/home/galsiton/ros2_ws/src/install/imu-pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/imu-pkg build --build-base /home/galsiton/ros2_ws/src/build/imu-pkg/build install --prefix /home/galsiton/ros2_ws/src/install/imu-pkg --record /home/galsiton/ros2_ws/src/build/imu-pkg/install.log --single-version-externally-managed
+[0.931s] running egg_info
+[0.931s] creating ../build/imu-pkg/imu_pkg.egg-info
+[0.931s] writing ../build/imu-pkg/imu_pkg.egg-info/PKG-INFO
+[0.932s] writing dependency_links to ../build/imu-pkg/imu_pkg.egg-info/dependency_links.txt
+[0.932s] writing entry points to ../build/imu-pkg/imu_pkg.egg-info/entry_points.txt
+[0.932s] writing requirements to ../build/imu-pkg/imu_pkg.egg-info/requires.txt
+[0.932s] writing top-level names to ../build/imu-pkg/imu_pkg.egg-info/top_level.txt
+[0.935s] writing manifest file '../build/imu-pkg/imu_pkg.egg-info/SOURCES.txt'
+[0.965s] reading manifest file '../build/imu-pkg/imu_pkg.egg-info/SOURCES.txt'
+[0.966s] writing manifest file '../build/imu-pkg/imu_pkg.egg-info/SOURCES.txt'
+[0.966s] running build
+[0.966s] running build_py
+[0.966s] creating /home/galsiton/ros2_ws/src/build/imu-pkg/build
+[0.966s] creating /home/galsiton/ros2_ws/src/build/imu-pkg/build/lib
+[0.966s] creating /home/galsiton/ros2_ws/src/build/imu-pkg/build/lib/imu-pkg
+[0.966s] copying imu-pkg/__init__.py -> /home/galsiton/ros2_ws/src/build/imu-pkg/build/lib/imu-pkg
+[0.966s] running install
+[0.967s] running install_lib
+[0.967s] creating /home/galsiton/ros2_ws/src/install/imu-pkg/lib/python3.8/site-packages/imu-pkg
+[0.967s] copying /home/galsiton/ros2_ws/src/build/imu-pkg/build/lib/imu-pkg/__init__.py -> /home/galsiton/ros2_ws/src/install/imu-pkg/lib/python3.8/site-packages/imu-pkg
+[0.968s] byte-compiling /home/galsiton/ros2_ws/src/install/imu-pkg/lib/python3.8/site-packages/imu-pkg/__init__.py to __init__.cpython-38.pyc
+[0.969s] running install_data
+[0.969s] creating /home/galsiton/ros2_ws/src/install/imu-pkg/share/ament_index
+[0.969s] creating /home/galsiton/ros2_ws/src/install/imu-pkg/share/ament_index/resource_index
+[0.969s] creating /home/galsiton/ros2_ws/src/install/imu-pkg/share/ament_index/resource_index/packages
+[0.969s] copying resource/imu-pkg -> /home/galsiton/ros2_ws/src/install/imu-pkg/share/ament_index/resource_index/packages
+[0.969s] copying package.xml -> /home/galsiton/ros2_ws/src/install/imu-pkg/share/imu-pkg
+[0.969s] running install_egg_info
+[0.970s] Copying ../build/imu-pkg/imu_pkg.egg-info to /home/galsiton/ros2_ws/src/install/imu-pkg/lib/python3.8/site-packages/imu_pkg-0.0.0-py3.8.egg-info
+[0.971s] running install_scripts
+[0.986s] writing list of installed files to '/home/galsiton/ros2_ws/src/build/imu-pkg/install.log'
+[1.014s] Invoked command in '/home/galsiton/ros2_ws/src/imu-pkg' returned '0': PYTHONPATH=/home/galsiton/ros2_ws/src/install/imu-pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/imu-pkg build --build-base /home/galsiton/ros2_ws/src/build/imu-pkg/build install --prefix /home/galsiton/ros2_ws/src/install/imu-pkg --record /home/galsiton/ros2_ws/src/build/imu-pkg/install.log --single-version-externally-managed

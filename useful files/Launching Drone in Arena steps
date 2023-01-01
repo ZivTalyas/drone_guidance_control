@@ -1,5 +1,0 @@
->> Open the Terminator
-cd Downloads
-./QGroundControl.AppImage 
-ros2 launch arena_backend_multicopter multicopter.launch.py 
-

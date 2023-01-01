@@ -1,5 +1,0 @@
-cd src/MAVSDK/examples/takeoff_and_land/
-cmake -Bbuild -H.
-cmake --build build -j4
-build/takeoff_and_land udp://:14540
-
