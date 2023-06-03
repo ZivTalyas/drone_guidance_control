@@ -1,10 +1,10 @@
-# Developing a tracking algorithm of adrone's linear acceleration profile in an environment without GPS
+# Developing a tracking algorithm of a drone's linear acceleration profile in an environment without GPS
 This project implements the article "Direct Acceleration Feedback Control of Quadrotor Aerial Vehicles",
 this article represents how to use a control method that is based on acceleration to create a controller for controlling the desired acceleration.
 
 **Note**: The acceleration that discusses in this file is **only** a linear acceleration.
 
-## Summary
+## Overview
 The project includes end-to-end scripts for flying the drone, those scripts are applied with the help of ROS2, Python, and MAVSDK. The scripts include generating known/random acceleration trajectories, acceleration, and orientations measurements, and implementing a direct acceleration feedback controller that calculates the roll, pitch, yaw, and thrust values to receive the desired acceleration. After that, sending the roll, pitch, yaw, and thrust values to the realization on the drone.
 
 ## Major scripts:
